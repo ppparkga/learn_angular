@@ -1,31 +1,21 @@
-<table>
-  <tr>
-    <th>
-      Item Available
-    </th>
-    <th>
-      Actions
-    </th>
-  </tr>
-  <tr>
-    <td>Item 1</td>
-    <td>
-      <button>Add to Cart</button>
-      <button>Add to Wish list</button>
-    </td>
-  </tr>
-  <tr>
-    <td>Item 2</td>
-    <td>
-      <button>Add to Cart</button>
-      <button>Add to Wish list</button>
-    </td>
-  </tr>
-  <tr>
-    <td>Item 3</td>
-    <td>
-      <button>Add to Cart</button>
-      <button>Add to Wish list</button>
-    </td>
-  </tr>
-</table>
+<mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Items </mat-header-cell>
+    <mat-cell *matCellDef="let itemData"> {{itemData.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let itemData">
+      <button *ngIf="!itemData.action.inCart" (click)="clickEvent('cart', itemData)">add to cart</button>
+      <button *ngIf="!itemData.action.isFavorites" (click)="clickEvent('favorite', itemData)">add to wish list</button>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Row Template -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;">
+  </mat-row>
+
+</mat-table>
