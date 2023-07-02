@@ -7,7 +7,7 @@
 <br>
 
 ## Description
-> 📌 2022 Angular 학습용 레포지토리
+> 📌 Angular 레포지토리
 <br>
 
 ## License
